@@ -12,7 +12,7 @@ directory "/var/s3" do
     owner "deploy"
     group "deploy"
     recursive true
-    mode 0755
+    mode 0775
     action :create
 end
 
@@ -32,6 +32,6 @@ directory "/var/s3/file" do
     owner "deploy"
     group "deploy"
     recursive true
-    mode 0755
+    mode 0775
     action :create
 end
