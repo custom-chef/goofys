@@ -16,10 +16,13 @@ directory "/var/s3" do
     action :create
 end
 
-execute "install goofys" do
+bash "install goofys" do
     user "root"
-    command 'GOPATH=/root/go go get github.com/kahing/goofys'
-    command 'GOPATH=/root/go go install github.com/kahing/goofys'
+    environment "GOPATH" => "/root/go"
+    code <<-EOS
+        go get github.com/kahing/goofys
+        go install github.com/kahing/goofys
+    EOS
     not_if { File.exists?('/root/go/bin/goofys') }
 end
 
